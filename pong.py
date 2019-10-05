@@ -34,6 +34,9 @@ ball.shape("square") # built in shape
 ball.color("white")
 ball.penup()
 ball.goto(0, 0) # place on Screen
+ball.dx = 0.5
+ball.dy = 0.5
+
 
 # Function
 
@@ -66,11 +69,30 @@ wn.onkey(paddleADown, "s")
 wn.onkey(paddleBUp, "Up")
 wn.onkey(paddleBDown, "Down")
 
-# def paddleBUp():
-
-
 
 # Main loop of the game
 
 while True:
     wn.update()
+
+    # move the Ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+# create borders
+
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1 # this reverses the direction
+
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1 # this reverses the direction
+
+    if ball.xcor() > 390:
+            ball.goto(0, 0)
+            ball.dx *= -1 # this reverses the direction
+
+    if ball.xcor() < -390:
+            ball.goto(0, 0)
+            ball.dx *= -1 # this reverses the direction

@@ -35,5 +35,42 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0) # place on Screen
 
+# Function
+
+def paddleAUp():
+    y = paddleA.ycor() # this method is from the turtle module. it returns the y coordinate
+    y += 20
+    paddleA.sety(y)
+
+def paddleADown():
+    y = paddleA.ycor() # this method is from the turtle module. it returns the y coordinate
+    y -= 20
+    paddleA.sety(y)
+
+def paddleBUp():
+    y = paddleB.ycor() # this method is from the turtle module. it returns the y coordinate
+    y += 20
+    paddleB.sety(y)
+
+def paddleBDown():
+    y = paddleB.ycor() # this method is from the turtle module. it returns the y coordinate
+    y -= 20
+    paddleB.sety(y)
+
+# keyboard binding
+# listening for keyboard input
+
+wn.listen()
+wn.onkey(paddleAUp, "w")
+wn.onkey(paddleADown, "s")
+wn.onkey(paddleBUp, "Up")
+wn.onkey(paddleBDown, "Down")
+
+# def paddleBUp():
+
+
+
+# Main loop of the game
+
 while True:
     wn.update()

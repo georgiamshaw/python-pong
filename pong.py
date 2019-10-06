@@ -6,6 +6,10 @@ wn.bgcolor("black")
 wn.setup(width=800, height=600)
 wn.tracer(0)
 
+# Score
+scoreA = 0
+scoreB = 0
+
 # Paddle A
 
 paddleA = turtle.Turtle()
@@ -36,6 +40,18 @@ ball.penup()
 ball.goto(0, 0) # place on Screen
 ball.dx = 0.5
 ball.dy = 0.5
+
+# pen
+
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
+
+
 
 
 # Function
@@ -92,10 +108,17 @@ while True:
     if ball.xcor() > 390:
             ball.goto(0, 0)
             ball.dx *= -1 # this reverses the direction
+            pen.clear()
+            scoreA += 1
+            pen.write("Player A: {}  Player B: {}".format(scoreA, scoreB), align="center", font=("Courier", 24, "normal"))
+
 
     if ball.xcor() < -390:
             ball.goto(0, 0)
             ball.dx *= -1 # this reverses the direction
+            pen.clear()
+            scoreB += 1
+            pen.write("Player A: {}  Player B: {}".format(scoreA, scoreB), align="center", font=("Courier", 24, "normal"))
 
 
     # paddle and ball colliding
